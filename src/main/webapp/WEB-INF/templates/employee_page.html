@@ -5,7 +5,7 @@
     <title>员工列表</title>
 </head>
 <body>
-<table >
+<table border="1" cellpadding="1" cellspacing="1" style="text-align: center">
     <tr>
         <th colspan="6">员工列表</th>
     </tr>
@@ -17,7 +17,7 @@
         <th>邮箱</th>
         <th>操作</th>
     </tr>
-    <tr th:each="employee,status: ${list}">
+    <tr th:each="employee,status: ${page.list}">
         <td th:text="${status.count}"></td>
         <td th:text="${employee.empName}"></td>
         <td th:text="${employee.age}"></td>
@@ -29,5 +29,11 @@
         </td>
     </tr>
 </table>
+<div style="text-align: center;">
+    <a th:if="${page.hasPreviousPage}" th:href="@{/employee/page/1}">首页</a>
+    <a th:if="${page.hasPreviousPage}" th:href="@{'/employee/page/'+${page.prePage}}">上一页</a>
+    <a th:if="${page.hasNextPage}" th:href="@{'/employee/page/'+${page.nextPage}}">下一页</a>
+    <a th:if="${page.hasNextPage}" th:href="@{'/employee/page/'+${page.pages}}">尾页</a>
+</div>
 </body>
 </html>
