@@ -1,21 +1,390 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- xmlns:th="http://www.thymeleaf.org" -->
+
 <head>
     <meta charset="UTF-8">
-    <title>Employee Info</title>
-    <!--<link rel="stylesheet" th:href="@{/static/css/index.css}"/>-->
+    <title>首页</title>
+    <style>
+        * {
+            margin: 0;
+            height: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .nav {
+            height: 50px;
+            color: #000;
+            background-color: rgba(0, 0,0,0.3);
+            border-bottom: 1px solid rgb(112, 110, 110);
+            margin-bottom: 5px;
+        }
+        li {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+        }
+        .nav ul li a {
+            display: inline-block;
+            width: 80px;
+            line-height: 50px;
+            font-size: 16px;
+            text-align: center;
+            padding: 0 10px;
+
+        }
+
+        .nav ul li a:hover {
+            border-bottom: 3px solid rgb(192, 221, 67);
+            background-color: rgb(195, 231, 18);
+
+        }
+
+        .box {
+
+            width: 1320px;
+            height: 480px;
+            /* background-color: rgb(111, 45, 45); */
+            margin: 0 auto;
+            border: #292828;
+            /*border: 1px solid rgb(red, rgb(39, 152, 39), blue);*/
+            /*background: url(/imgs/login_bj.jpg) no-repeat top center;*/
+        }
+
+        .b {
+            width: 100%;
+            height: 140px;
+            border-top: 1px solid rgb(55, 54, 54);
+            margin-top: 10px;
+        }
+
+        .b0x1 {
+            float: left;
+            width: 305px;
+            margin-right: 2px;
+            background-color: pink;
+        }
+
+        .b0x2 {
+            position: relative;
+            float: left;
+            width: 710px;
+            background-color: rgb(237, 171, 171);
+
+        }
+        .b0x3 {
+
+            float: right;
+            width: 300px;
+            background-color: rgb(171, 224, 177);
+        }
+        .b0x2 img {
+            width: 100%;
+            height: 100%;
+        }
+        .b0x2 .nbox {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            margin-left: -250px;
+            width: 500px;
+            height: 400px;
+            text-align: center;
+            /* background-color: rgb(212, 66, 190); */
+            border: 1px solid rgb(204, 83, 83);
+        }
+
+        .w {
+            margin: 100px auto;
+        }
+
+
+
+        .tb-promo {
+            position: relative;
+            width: 710px;
+            height: 480px;
+            /* background-color: rgb(246, 158, 158); */
+        }
+
+
+
+
+        .tb-promo img {
+            width: 710px;
+            height: 480px;
+        }
+
+        .prev,
+        .next {
+            position: absolute;
+            top: 50%;
+            margin-top: -15px;
+            width: 40px;
+            height: 60px;
+            background-color: rgba(0, 0, 0, .4);
+            text-align: center;
+            line-height: 60px;
+
+        }
+
+        .prev {
+            left: 0;
+            border-top-right-radius: 30px;
+            border-bottom-right-radius: 30px;
+            font-size: 22px;
+        }
+
+        .next {
+            right: 0;
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+            font-size: 22px;
+        }
+
+        .promo-nav {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            margin-left: -35px;
+            width: 100px;
+            height: 13px;
+            /* background: rgba(255,255,255,.3); */
+            background: rgba(0, 0, 0, .3);
+            border-radius: 7px;
+        }
+
+        .promo-nav li {
+            width: 7px;
+            height: 7px;
+            background-color: #fff;
+            float: left;
+            border-radius: 50%;
+            margin: 3.5px;
+        }
+
+        .promo-nav .selected {
+            background-color: #ff5000;
+        }
+
+        .gg {
+
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 30px;
+            height: 16px;
+            font-size: 12px;
+            background-color: rgba(0, 0, 0, .4);
+            text-align: center;
+        }
+        .box31 {
+
+            display: inline-block;
+            width: 240px;
+            height: 70px;
+            background-color: #e2bebe;
+            margin: auto 10%;
+            text-align: center;
+            line-height: 70px;
+        }
+
+        .box31 div {
+            width: 36px;
+            height: 36px;
+            border-radius: 18px;
+        }
+        .box31 img {
+
+            right: 0;
+            top: 10px;
+            width: 36px;
+            height: 36px;
+            line-height: 36px;
+            /* text-align: center; */
+            /* margin: 10% auto; */
+        }
+    </style>
 
 </head>
+
 <body>
-<a th:href="@{/employee}">查询所有员工信息</a>
-<a th:href="@{/employee/page/1}">查询所有员工信息</a>
-<div style="accent-color: brown">
-    <a th:href="">首页</a>
-    <a th:href="">添加</a>
-    <a th:href="">修改</a>
-    <a th:href="">功能</a>
-    <a th:href="">本站信息</a>
+<div class="nav">
+    <ul>
+        <li><a th:href="@{#}">首页</a>
+            <a th:href="@{#}">添加</a>
+            <a th:href="@{#}">修改</a>
+            <a th:href="@{#}">功能</a>
+            <a th:href="@{#}">本站信息</a>
+        </li>
+    </ul>
+</div>
+
+<div class="box">
+    <div class="b0x1"></a>
+<!--        <a th:href="@{/employee/page/1}"></a>-->
+<!--        <a th:href="@{/employee}">查询所>查询所有员工信息</a>-->
+        <img th:src="@{/static/images/3.jpg}">
+    </div>
+    <div class="b0x2">
+        <div class="tb-promo">
+
+<!--            <img th:src="@{/static/images/bj.jpg}" alt="">-->
+            <img th:src="@{/static/images/1.jpg}" alt="">
+            <a href="#" class="prev"> &lt;</a>
+            <a href="#" class="next"> &gt;</a>
+            <ul class="promo-nav">
+                <li></li>
+                <li></li>
+                <li class="selected"></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <span class="gg">广告</span>
+        </div>
+    </div>
+    <div class="b0x3">
+        <img th:src="@{/static/images/2.jpg}">
+
+    </div>
 
 </div>
 
+<div class="b"></div>
 </body>
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--&lt;!&ndash; xmlns:th="http://www.thymeleaf.org" &ndash;&gt;-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>首页</title>-->
+<!--    <style>-->
+<!--        * {-->
+<!--            margin: 0;-->
+<!--            height: 0;-->
+<!--            width: 100%;-->
+<!--            height: 100%;-->
+<!--        }-->
+
+<!--        .nav {-->
+<!--            height: 50px;-->
+<!--            color: #000;-->
+<!--            background-color: rgba(0, 0,0,0.3);-->
+<!--            border-bottom: 1px solid rgb(112, 110, 110);-->
+<!--            margin-bottom: 5px;-->
+<!--        }-->
+<!--        li {-->
+<!--            list-style: none;-->
+<!--        }-->
+<!--        a {-->
+<!--            text-decoration: none;-->
+<!--        }-->
+<!--        .nav ul li a {-->
+<!--            display: inline-block;-->
+<!--            width: 80px;-->
+<!--            line-height: 50px;-->
+<!--            font-size: 16px;-->
+<!--            text-align: center;-->
+<!--            padding: 0 10px;-->
+
+<!--        }-->
+
+<!--        .nav ul li a:hover {-->
+<!--            border-bottom: 3px solid rgb(192, 221, 67);-->
+<!--            background-color: rgb(195, 231, 18);-->
+
+<!--        }-->
+
+<!--        .box {-->
+
+<!--            width: 1320px;-->
+<!--            height: 480px;-->
+<!--            /* background-color: rgb(111, 45, 45); */-->
+<!--            margin: 0 auto;-->
+<!--            /*border: 1px solid rgb(red, rgb(39, 152, 39), blue);*/-->
+<!--            /*background: url(/imgs/login_bj.jpg) no-repeat top center;*/-->
+<!--        }-->
+
+<!--        .b {-->
+<!--            width: 100%;-->
+<!--            height: 140px;-->
+<!--            border-top: 1px solid rgb(104, 102, 102);-->
+<!--            margin-top: 10px;-->
+<!--        }-->
+
+<!--        .b0x1 {-->
+<!--            float: left;-->
+<!--            width: 310px;-->
+<!--            background-color: pink;-->
+<!--        }-->
+
+<!--        .b0x2 {-->
+<!--            position: relative;-->
+<!--            float: left;-->
+<!--            width: 710px;-->
+<!--            background-color: rgb(220, 135, 135);-->
+
+<!--        }-->
+<!--        .b0x3 {-->
+
+<!--            float: right;-->
+<!--            width: 300px;-->
+<!--            background-color: rgb(42, 88, 47);-->
+<!--        }-->
+<!--        .b0x2 img {-->
+<!--            width: 100%;-->
+<!--            height: 100%;-->
+<!--        }-->
+<!--        .b0x2 .nbox {-->
+<!--            position: absolute;-->
+<!--            top: 50px;-->
+<!--            left: 50%;-->
+<!--            margin-left: -250px;-->
+<!--            width: 500px;-->
+<!--            height: 400px;-->
+<!--            text-align: center;-->
+<!--            background-color: rgb(212, 66, 190);-->
+<!--            border: 1px solid rgb(204, 83, 83);-->
+<!--        }-->
+<!--    </style>-->
+
+<!--</head>-->
+
+<!--<body>-->
+<!--<div class="nav">-->
+<!--    <ul>-->
+<!--        <li><a th:href="@{#}">首页</a>-->
+<!--            <a th:href="@{#}">添加</a>-->
+<!--            <a th:href="@{#}">修改</a>-->
+<!--            <a th:href="@{#}">功能</a>-->
+<!--            <a th:href="@{#}">本站信息</a>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--</div>-->
+
+<!--<div class="box">-->
+<!--    <div class="b0x1">-->
+<!--        <a th:href="@{/employee}">查询所有员工信息</a>-->
+<!--        <a th:href="@{/employee/page/1}">查询所有员工信息</a>-->
+<!--    </div>-->
+<!--    <div class="b0x2">-->
+<!--        <div class="nbox">-->
+<!--            <img th:src="@{/static/images/login_bj.jpg}" alt="这是一张图片"/>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="b0x3">-->
+<!--        3-->
+<!--    </div>-->
+
+<!--</div>-->
+
+<!--<div class="b"></div>-->
+<!--</body>-->

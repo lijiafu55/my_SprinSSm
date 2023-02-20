@@ -17,6 +17,7 @@ import java.util.List;
 */
 @Service
 @Transactional
+
 public class EmployeeServiceImpl implements EmployeeService{
     /* @Autowired
        *protected SqlSessionFactory sqlSessionFactory;
@@ -38,6 +39,14 @@ public class EmployeeServiceImpl implements EmployeeService{
         //获取分页相关数据
         PageInfo<Employee> page = new PageInfo<Employee>(list, 5);
         return page;
+    }
+
+    @Override
+    public boolean login(String username, String password) {
+        if(employeeMapper.login(username, password)==1){
+            return true;
+        }
+        return false;
     }
 
 

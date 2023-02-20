@@ -1,6 +1,7 @@
 package com.xss.ssm.mapper;
 
 import com.xss.ssm.pojo.Employee;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -13,4 +14,7 @@ public interface EmployeeMapper {
 
 
     List<Employee> getAllEmployee();
+
+
+    int login(@Param("username") String username, @Param("password") String password);
 }

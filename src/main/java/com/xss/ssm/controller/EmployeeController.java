@@ -45,4 +45,13 @@ public class EmployeeController {
 
     }
 
+    @RequestMapping(value = "/registered")
+    public String getRegistered() {
+        return "registered";
+    }
+//
+    @RequestMapping(value = "/Reset")
+    public String getReset() {
+        return "Reset";
+    }
 }

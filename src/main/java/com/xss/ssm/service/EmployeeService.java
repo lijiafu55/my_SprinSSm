@@ -10,4 +10,6 @@ public interface EmployeeService {
 
 
     PageInfo<Employee> getPageAllEmployee(Integer pageNum);
+
+    boolean login(String username, String username1);
 }
